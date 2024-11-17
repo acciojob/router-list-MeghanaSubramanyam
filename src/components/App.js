@@ -1,17 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ItemList from './ItemList';
 import ItemDetail from './ItemDetail';
-import "./styles/App.css";
+
+const items = [
+    { id: 1, name: 'Item 1', description: 'Description for Item 1' },
+    { id: 2, name: 'Item 2', description: 'Description for Item 2' },
+    { id: 3, name: 'Item 3', description: 'Description for Item 3' }
+];
 
 function App() {
     return (
-        <Router>
+        <BrowserRouter>
             <Routes>
-                <Route path="/" element={<ItemList />} />
-                <Route path="/item/:id" element={<ItemDetail />} />
+                <Route path="/" element={<ItemList items={items} />} />
+                <Route path="/item/:itemId" element={<ItemDetail items={items} />} />
             </Routes>
-        </Router>
+        </BrowserRouter>
     );
 }
 
